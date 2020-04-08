@@ -1,4 +1,6 @@
 // Business Logic --------------------------------------------
+var round = 1;
+var turnTotal = 0;
 function GrandTotal() {
   this.player1GrandTotal = 0,
   this.player2GrandTotal = 0,
@@ -8,12 +10,20 @@ function GrandTotal() {
 GrandTotal.prototype.updateTotal = function(turnTotal) {
   if (this.playerId === 1) {
     this.player1GrandTotal += turnTotal;
+    turnTotal = 0;
     switchPlayer();
   } else if (this.playerId === 2) {
     this.player2GrandTotal += turnTotal;
+    turnTotal = 0;
+    round += 1;
+    if(round ===4){
+      var endOfGame = 1;
+    } else {
     switchPlayer();
+    }
   }
-}
+} //updateTotal
+
 
 //Add logic for update round and terminate game
 
@@ -38,6 +48,7 @@ var eachRoll = function(){
 
 
 var roundTotal = function(){
+ if(round )
  var rollResult = eachRoll();
  if (rollResult === 0){
    turnTotal = 0;
