@@ -11,12 +11,17 @@
     <div class="container">
       <div class="game">
         <h1>Welcome to the Game of Pig Dice!</h1>
-        <div class="row">
-          <div class="col-md-6">
+        <div class= "row">
+          <!-- Rounds -->
+          <p>Round: <span class="round"></span></p>
+          <p>Current Player: <span class="playerId"></span></p>
+          <div class="col-md-5">
             <!-- Player 1 -->
+            <p>Total Score Player 1: <span class="playerOneScore"></span></p>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <!-- Player 2 -->
+            <p>Total Score Player 2: <span class="playerTwoScore"></span></p>
           </div>
         </div>
         <button class="btn" id="roll">Roll Dice!</button>
@@ -26,10 +31,10 @@
       <div class="results">
         <h1>Here are the final results!</h1>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <!-- Player 1 -->
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <!-- Player 2 -->
           </div>
         </div>
@@ -37,3 +42,5 @@
     </div>
   </body>
 </html>
+
+<!-- Future ideas after functionality is achieved: instruction page/toggle, home page to start game, choose who goes first p1 p2, select how many rounds -->
