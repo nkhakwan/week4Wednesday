@@ -11,16 +11,14 @@ function GrandTotal() {
 GrandTotal.prototype.updateTotal = function(turnTotal) {
   if (this.playerId === 1) {
     this.player1GrandTotal += turnTotal;
-    turnTotal = 0;
-    switchPlayer();
+    this.switchPlayer();
   } else if (this.playerId === 2) {
     this.player2GrandTotal += turnTotal;
-    turnTotal = 0;
     round += 1;
     if (round === 4) {
       endOfGame();
     } else {
-    switchPlayer();
+    this.switchPlayer();
     }
   }
 }
@@ -28,48 +26,64 @@ GrandTotal.prototype.updateTotal = function(turnTotal) {
 GrandTotal.prototype.switchPlayer = function() {  
   if (this.playerId === 1) {
     this.playerId = 2;
+    turnTotal = 0;
   } else if (this.playerId === 2) {
     this.playerId = 1;
+    turnTotal = 0;
   }
 }
 
 var eachRoll = function() {
+  var rollTotal = 0;
   var randomGenerator = Math.floor(Math.random() * 6) + 1;
   if (randomGenerator === 1) {
-    rollTotal = 0;
+    return rollTotal = 0;
   } else {
-    rollTotal += randomGenerator;
+    return randomGenerator;
   }
-  return rollTotal;
+  
 }
 
 var roundTotal = function() {
  var rollResult = eachRoll();
  if (rollResult === 0){
-   turnTotal = 0;
-   updateTotal(turnTotal);
+  turnTotal = 0;
+  grandTotal.updateTotal(turnTotal);
+  alert("hit 1"); 
   }
   else {
     turnTotal += rollResult;
+    alert(turnTotal);
   } 
 }
 
 
 
 // User Interface Logic ------------------------------
-var endOfGame = function(){
-  $("#game").hide();
-  $("#results").show();
+var grandTotal = new GrandTotal();
+var endOfGame = function() {
+  $(".gameover").show();
 }
 
-$(document).ready(function(){
-  $("button#roll").click(function(){
+var refreshScores = function() {
+  $(".playerOneScore").html(grandTotal.player1GrandTotal);
+  $(".playerTwoScore").html(grandTotal.player2GrandTotal);
+  $(".round").html(round);
+}
+
+
+$(document).ready(function() {
+
+  $("button#roll").click(function() {
     roundTotal();
+    refreshScores();
   })
   //Update hold in the future so two places are not updating the same variable-best practice
-  $("button#hold").click(function(){  
-    updateTotal();
+  $("button#hold").click(function() {  
+    grandTotal.updateTotal(turnTotal);
+    refreshScores();
   })
+
 
 })
 
@@ -116,8 +130,8 @@ $(document).ready(function(){
 
 // $(document).ready(function() {
 //   attachContactListeners();
-//   $("form#new-contact").submit(function(event) {
-//     event.preventDefault();
+//   $("form#new-contact").submit(function() {
+//  
 //     var inputtedFirstName = $("input#new-first-name").val();
 //     var inputtedLastName = $("input#new-last-name").val();
 //     var inputtedPhoneNumber = $("input#new-phone-number").val();
