@@ -1,6 +1,7 @@
 // Business Logic --------------------------------------------
 var round = 1;
 var turnTotal = 0;
+
 function GrandTotal() {
   this.player1GrandTotal = 0,
   this.player2GrandTotal = 0,
@@ -16,16 +17,13 @@ GrandTotal.prototype.updateTotal = function(turnTotal) {
     this.player2GrandTotal += turnTotal;
     turnTotal = 0;
     round += 1;
-    if(round ===4){
-      var endOfGame = 1;
+    if (round === 4) {
+      endOfGame();
     } else {
     switchPlayer();
     }
   }
-} //updateTotal
-
-
-//Add logic for update round and terminate game
+}
 
 GrandTotal.prototype.switchPlayer = function() {  
   if (this.playerId === 1) {
@@ -35,9 +33,8 @@ GrandTotal.prototype.switchPlayer = function() {
   }
 }
 
-
-var eachRoll = function(){
-  var randomGenerator = Math.floor(Math.random() * 6) +1;
+var eachRoll = function() {
+  var randomGenerator = Math.floor(Math.random() * 6) + 1;
   if (randomGenerator === 1) {
     rollTotal = 0;
   } else {
@@ -46,21 +43,25 @@ var eachRoll = function(){
   return rollTotal;
 }
 
-
-var roundTotal = function(){
- if(round )
+var roundTotal = function() {
  var rollResult = eachRoll();
  if (rollResult === 0){
    turnTotal = 0;
-   updateTotal(turnTotal)
- }
+   updateTotal(turnTotal);
+  }
   else {
     turnTotal += rollResult;
+  } 
 }
 
 
 
 // User Interface Logic ------------------------------
+var endOfGame = function(){
+  $("#game").hide();
+  $("#results").show();
+}
+
 $(document).ready(function(){
   $("button#roll").click(function(){
     roundTotal();
@@ -69,6 +70,7 @@ $(document).ready(function(){
   $("button#hold").click(function(){  
     updateTotal();
   })
+
 })
 
 
