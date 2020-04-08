@@ -4,7 +4,7 @@ button {
 }
 
 button:hover {
-  background-color: white;
+  background-color: rgb(37, 99, 88);
   border: 3px solid rgb(120, 192, 192);
 }
 
