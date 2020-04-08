@@ -1,35 +1,59 @@
+// Business Logic --------------------------------------------
 function GrandTotal() {
   this.player1GrandTotal = 0,
-  this.player2GrandTotal = 0
+  this.player2GrandTotal = 0,
+  this.playerId = 1
 }
 
-GrandTotal.prototype.updateTotal = function(turnTotal, playerId) {
-  if (playerId === 1) {
+GrandTotal.prototype.updateTotal = function(turnTotal) {
+  if (this.playerId === 1) {
     this.player1GrandTotal += turnTotal;
-  } else if (playerId === 2) {
+    switchPlayer();
+  } else if (this.playerId === 2) {
     this.player2GrandTotal += turnTotal;
+    switchPlayer();
+  }
+}
+
+GrandTotal.prototype.switchPlayer = function() {  
+  if (this.playerId === 1) {
+    this.playerId = 2;
+  } else if (this.playerId === 2) {
+    this.playerId = 1;
   }
 }
 
 
 var eachRoll = function(){
   var randomGenerator = Math.floor(Math.random() * 6) +1;
-if (randomGenerator === 1) {
-  rollTotal = 0;
-} else {
-  rollTotal += randomGenerator;
+  if (randomGenerator === 1) {
+    rollTotal = 0;
+  } else {
+    rollTotal += randomGenerator;
   }
-return rollTotal;
+  return rollTotal;
+}
+
+
+var roundTotal = function(){
+ var rollResult = eachRoll();
+ if (rollResult === 0){
+   turnTotal = 0;
+   updateTotal(turnTotal)
+ }
+  else {
+    turnTotal += rollResult;
 }
 
 
 
-
+// User Interface Logic ------------------------------
 $(document).ready(function(){
-  var player1Id = 1;
-  var player2Id = 2;
   $("button#roll").click(function(){
-    
+    roundTotal();
+  })
+  $("button#hold").click(function(){  //Update in the future to separate function so two places are not updating the same variable
+    updateTotal();
   })
 })
 
@@ -37,7 +61,7 @@ $(document).ready(function(){
 
 
 
-// User Interface Logic ---------
+// Example User Interface Logic ---------
 var addressBook = new AddressBook();
 
 function displayContactDetails(addressBookToDisplay) {
