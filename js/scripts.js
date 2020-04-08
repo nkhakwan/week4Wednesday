@@ -45,14 +45,17 @@ var eachRoll = function() {
 
 var roundTotal = function() {
  var rollResult = eachRoll();
+ $(".dice").html(rollResult);
  if (rollResult === 0){
   turnTotal = 0;
   grandTotal.updateTotal(turnTotal);
+  $(".dice").html(0);
   alert("hit 1"); 
   }
   else {
     turnTotal += rollResult;
     alert(turnTotal);
+    $(".roll-total").html(turnTotal);
   } 
 }
 
