@@ -37,8 +37,21 @@ var eachRoll = function() {
   }
 }
 
+// User Interface Logic ------------------------------
+var diceDisplay = function(rollResult) {
+  $(".dice-hide").hide();
+  if (rollResult === 1) {
+
+  } else if (rollResult === 2) {
+    $("#two").show();
+  } else {
+    $(".roll").show();
+  }
+}
+
 var roundTotal = function() {
   var rollResult = eachRoll();
+  diceDisplay(rollResult);
   $(".roll").html(rollResult);
   if (rollResult === 0){
     turnTotal = 0;
@@ -51,9 +64,6 @@ var roundTotal = function() {
   } 
 }
 
-
-
-// User Interface Logic ------------------------------
 var playerResults = new PlayerResults ();
 var endOfGame = function() {
   $(".gameover").show();
