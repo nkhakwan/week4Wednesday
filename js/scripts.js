@@ -1,21 +1,23 @@
 // Business Logic --------------------------------------------
-var round = 1;
-var turnTotal = 0;
+// var round = 1;
+ var turnTotal = 0;
 
-function GrandTotal() {
+
+function PlayerResults() {
   this.player1GrandTotal = 0,
   this.player2GrandTotal = 0,
-  this.player1Turn = true
+  this.player1Turn = true,
+  this.round = 1
 }
 
-GrandTotal.prototype.updateTotal = function(turnTotal) {
+PlayerResults.prototype.updateTotal = function(turnTotal) {
   if (this.player1Turn) {
     this.player1GrandTotal += turnTotal;
     this.switchPlayer();
   } else {
     this.player2GrandTotal += turnTotal;
-    round += 1;
-    if (round === 4) {
+    this.round += 1;
+    if (this.round === 4) {
       endOfGame();
     } else {
     this.switchPlayer();
@@ -23,7 +25,7 @@ GrandTotal.prototype.updateTotal = function(turnTotal) {
   }
 }
 
-GrandTotal.prototype.switchPlayer = function() {
+PlayerResults.prototype.switchPlayer = function() {
   this.player1Turn = !this.player1Turn;
   turnTotal = 0;
 }
@@ -42,7 +44,7 @@ var roundTotal = function() {
  $(".roll").html(rollResult);
  if (rollResult === 0){
   turnTotal = 0;
-  grandTotal.updateTotal(turnTotal);
+  playerResults.updateTotal(turnTotal);
   $(".roll").html(1);
   }
   else {
@@ -54,19 +56,19 @@ var roundTotal = function() {
 
 
 // User Interface Logic ------------------------------
-var grandTotal = new GrandTotal();
+var playerResults = new PlayerResults ();
 var endOfGame = function() {
   $(".gameover").show();
   $("button#roll").hide();
   $("button#hold").hide();
-  round = 0;
+  playerResults.round = 0;
 }
 
 var refreshScores = function() {
-  $(".playerOneScore").html(grandTotal.player1GrandTotal);
-  $(".playerTwoScore").html(grandTotal.player2GrandTotal);
-  $(".round").html(round);
-  if (grandTotal.player1Turn) {
+  $(".playerOneScore").html(playerResults.player1GrandTotal);
+  $(".playerTwoScore").html(playerResults.player2GrandTotal);
+  $(".round").html(playerResults.round);
+  if (playerResults.player1Turn) {
     $(".playerId").html(1);
   } else {
     $(".playerId").html(2);
@@ -80,7 +82,7 @@ $(document).ready(function() {
   })
   //Update hold in the future so two places are not updating the same variable-best practice
   $("button#hold").click(function() {  
-    grandTotal.updateTotal(turnTotal);
+    playerResults.updateTotal(turnTotal);
     refreshScores();
   })
   $("button#new-game").click(function() {
