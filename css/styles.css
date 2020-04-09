@@ -15,7 +15,7 @@ button:hover {
   border: 3px solid rgb(120, 192, 192);
 }
 
-.round, .player {
+.round, .player, .winner {
   font-size: 2em;
   font-weight: bolder;
 }
@@ -28,4 +28,11 @@ button:hover {
 img {
   width: 70%;
   margin: 5%;
+}
+
+@media screen and (min-width: 768px) {
+  img {
+    width: 40%;
+    margin: 5%;
+  }
 }
