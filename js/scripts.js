@@ -5,14 +5,14 @@ var turnTotal = 0;
 function GrandTotal() {
   this.player1GrandTotal = 0,
   this.player2GrandTotal = 0,
-  this.playerId = 1
+  this.player1Turn = true
 }
 
 GrandTotal.prototype.updateTotal = function(turnTotal) {
-  if (this.playerId === 1) {
+  if (this.player1Turn) {
     this.player1GrandTotal += turnTotal;
     this.switchPlayer();
-  } else if (this.playerId === 2) {
+  } else {
     this.player2GrandTotal += turnTotal;
     round += 1;
     if (round === 4) {
@@ -23,21 +23,15 @@ GrandTotal.prototype.updateTotal = function(turnTotal) {
   }
 }
 
-GrandTotal.prototype.switchPlayer = function() {  
-  if (this.playerId === 1) {
-    this.playerId = 2;
-    turnTotal = 0;
-  } else if (this.playerId === 2) {
-    this.playerId = 1;
-    turnTotal = 0;
-  }
+GrandTotal.prototype.switchPlayer = function() {
+  this.player1Turn = !this.player1Turn;
+  turnTotal = 0;
 }
 
 var eachRoll = function() {
-  var rollTotal = 0;
-  var randomGenerator = Math.floor(Math.random() * 6) + 1;
+  var randomGenerator = Math.ceil(Math.random() * 6);
   if (randomGenerator === 1) {
-    return rollTotal = 0;
+    return 0;
   } else {
     return randomGenerator;
   }
@@ -45,16 +39,14 @@ var eachRoll = function() {
 
 var roundTotal = function() {
  var rollResult = eachRoll();
- $(".dice").html(rollResult);
+ $(".roll").html(rollResult);
  if (rollResult === 0){
   turnTotal = 0;
   grandTotal.updateTotal(turnTotal);
-  $(".dice").html(0);
-  alert("hit 1"); 
+  $(".roll").html(1);
   }
   else {
     turnTotal += rollResult;
-    alert(turnTotal);
     $(".roll-total").html(turnTotal);
   } 
 }
@@ -69,13 +61,16 @@ var endOfGame = function() {
   $("button#hold").hide();
   round = 0;
 }
-//ADD LOGIC TO REFRESH PAGE
 
 var refreshScores = function() {
   $(".playerOneScore").html(grandTotal.player1GrandTotal);
   $(".playerTwoScore").html(grandTotal.player2GrandTotal);
   $(".round").html(round);
-  $(".playerId").html(grandTotal.playerId);
+  if (grandTotal.player1Turn) {
+    $(".playerId").html(1);
+  } else {
+    $(".playerId").html(2);
+  } 
 }
 
 $(document).ready(function() {
