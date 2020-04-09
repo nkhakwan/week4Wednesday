@@ -9,24 +9,26 @@
   </head>
   <body>
     <div class="container">
+      <div class="welcome">
+        <h1 class="jumbotron">Welcome to Pig Dice!</h1>
+        <img src="https://i.pinimg.com/originals/c4/87/98/c487981af295ce59ca9441c2d8185fdc.png" alt="Waddles the pig">
+        <button class="btn btn-lg" id="start">Play game!</button>
+      </div>
       <div class="game">
-        <h1>Welcome to the Game of Pig Dice!</h1>
         <div class= "row">
           <p>Round</p>
           <span class="round">1</span>
           <hr>
           <p>Current Player: <span class="playerId">1</span></p>
-          <p>Dice: <span class="roll"></span></p>
-          <div class="dice-hide">
-            <div class="dice-center">
-              <img id="one" src="" alt="Dice result 1">
-              <img id="two" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dice-2-b.svg/1114px-Dice-2-b.svg.png" alt="Dice result 2">
-              <img id="three" src="" alt="Dice result 3">
-              <img id="four" src="" alt="Dice result 4">
-              <img id="five" src="" alt="Dice result 5">
-              <img id="six" src="" alt="Dice result 6">
-            </div>
+          <div class="dice-center">
+            <img id="pig" class="dice-hide" src="https://www.stickpng.com/assets/images/5b45cc0ac051e602a568cd27.png" alt="Dice result 1-a pig!">
+            <img id="two" class="dice-hide" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Dice-2-b.svg/1114px-Dice-2-b.svg.png" alt="Dice result 2">
+            <img id="three" class="dice-hide" src="https://www.pinclipart.com/picdir/big/115-1154873_original-file-face-of-dice-3-clipart.png" alt="Dice result 3">
+            <img id="four" class="dice-hide" src="https://library.kissclipart.com/20180831/yw/kissclipart-dice-4-transparent-clipart-dice-four-sided-die-cli-0a49ecb2b6be6bb3.png" alt="Dice result 4">
+            <img id="five" class="dice-hide" src="https://cdn.clipart.email/fe41ba305940360c401d55ee53e3cae7_5-dice-clipart_2000-2000.png" alt="Dice result 5">
+            <img id="six" class="dice-hide" src="https://cdn.clipart.email/9e41b394d42356ffadf550897fdd1c33_dice-clipart-six-picture-2853362-dice-clipart-six_2000-2000.png" alt="Dice result 6">
           </div>
+          <hr>
           <p>Current Accumulated Score: <span class="roll-total"></span></p>
           <div class="score col-md-6">
             <p>Total Score Player 1:</p>
@@ -37,8 +39,8 @@
             <span class="player playerTwoScore">0</span>
           </div>
         </div>
-        <button class="btn" id="roll">Roll Dice!</button>
-        <button class="btn" id="hold">Hold!</button>
+        <button class="btn btn-lg" id="roll">Roll Dice!</button>
+        <button class="btn btn-lg" id="hold">Hold!</button>
       </div>
 
       <div class="gameover">
@@ -53,8 +55,9 @@
             <p class="player playerTwoScore"></p>
           </div>
           <h2>Winner</h2>
-          <p class="winner"></p> 
-          <button class="btn" id="new-game">New game?</button>
+          <p class="winner"></p>
+          <div class="larger-button">
+          <button class="btn btn-lg" id="new-game">New game?</button>
         </div>
         <img src="https://pngimage.net/wp-content/uploads/2018/06/waddles-png-8-300x200.png" alt="A pig doodle with hearts.">
       </div>

@@ -5,6 +5,19 @@ body {
   background-color: rgb(221, 248, 246);
 }
 
+p {
+  font-size: 1.5em;
+}
+
+.jumbotron {
+  background-color: white;
+  border: 3px solid rgb(120, 192, 192);
+}
+
+.game {
+  display: none;
+}
+
 button {
   background-color: rgb(94, 182, 182);
   border: 3px solid white;
@@ -18,14 +31,6 @@ button:hover {
 .round, .player, .winner {
   font-size: 2em;
   font-weight: bolder;
-}
-
-.dice-center {
-  visibility: hidden;
-  display: block;
-  width: 30%;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .gameover {
@@ -42,4 +47,20 @@ img {
   img {
     width: 40%;
   }
+}
+
+.dice-center {
+  display: block;
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.dice-hide{
+  display: none;
+}
+
+#pig {
+  width: 65%;
+  margin: 5%;
 }

@@ -41,22 +41,27 @@ var eachRoll = function() {
 var diceDisplay = function(rollResult) {
   $(".dice-hide").hide();
   if (rollResult === 1) {
-
+    $(".dice-hide#pig").show();
   } else if (rollResult === 2) {
-    $("#two").show();
-  } else {
-    $(".roll").show();
+    $(".dice-hide#two").show();
+  } else if (rollResult === 3) {
+    $(".dice-hide#three").show();
+  } else if (rollResult === 4) {
+    $(".dice-hide#four").show();
+  } else if (rollResult === 5) {
+    $(".dice-hide#five").show();
+  } else if (rollResult === 6) {
+    $(".dice-hide#six").show();
   }
 }
 
 var roundTotal = function() {
   var rollResult = eachRoll();
   diceDisplay(rollResult);
-  $(".roll").html(rollResult);
   if (rollResult === 0){
+    diceDisplay(1)
     turnTotal = 0;
     playerResults.updateTotal(turnTotal);
-    $(".roll").html(1);
   }
   else {
     turnTotal += rollResult;
@@ -90,6 +95,11 @@ var refreshScores = function() {
 }
 
 $(document).ready(function() {
+  $("#start").click(function() {
+    $(".game").show();
+    $(".welcome").hide();
+  })
+  $("#pig").show();
   $("button#roll").click(function() {
     roundTotal();
     refreshScores();
