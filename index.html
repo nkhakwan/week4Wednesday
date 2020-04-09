@@ -12,15 +12,19 @@
       <div class="game">
         <h1>Welcome to the Game of Pig Dice!</h1>
         <div class= "row">
-          <p>Round: <span class="round">1</span></p>
+          <p>Round</p>
+          <span class="round">1</span>
+          <hr>
           <p>Current Player: <span class="playerId">1</span></p>
           <p>Dice: <span class="roll"></span></p>
-          <p>Current Roll Totals: <span class="roll-total"></span></p>
-          <div class="col-md-5">
-            <p>Total Score Player 1: <span class="playerOneScore">0</span></p>
+          <p>Current Accumulated Score: <span class="roll-total"></span></p>
+          <div class="score col-md-6">
+            <p>Total Score Player 1:</p>
+            <span class="player playerOneScore">0</span>
           </div>
-          <div class="col-md-5">
-            <p>Total Score Player 2: <span class="playerTwoScore">0</span></p>
+          <div class="score col-md-6">
+            <p>Total Score Player 2:</p>
+            <span class="player playerTwoScore">0</span>
           </div>
         </div>
         <button class="btn" id="roll">Roll Dice!</button>
@@ -28,8 +32,23 @@
       </div>
 
       <div class="gameover">
-        <h1>Game Over!</h1>
-        <button class="btn" id="new-game">New game?</button>
+            <h1>Game Over!</h1>
+            <div class="row">
+              <div class="score col-md-6">
+                <p>Final Score Player 1:</p>
+                <span class="player playerOneScore"></span>
+              </div>
+              <div class="score col-md-6">
+                <p>Final Score Player 2:</p>
+                <span class="player playerTwoScore"></span>
+              </div>
+              <h2>Winner</h2>
+              <!-- ADD JS LOGIC FOR WHO GOT MORE POINTS TO DISPLAY WINNER -->
+              <span class="winner"></span> 
+              <button class="btn" id="new-game">New game?</button>
+            </div>
+            <img src="https://pngimage.net/wp-content/uploads/2018/06/waddles-png-8-300x200.png" alt="A pig doodle with hearts.">
+        </div>
       </div>
     </div>
   </body>

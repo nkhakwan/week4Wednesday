@@ -57,8 +57,7 @@ var roundTotal = function() {
 var playerResults = new PlayerResults ();
 var endOfGame = function() {
   $(".gameover").show();
-  $("button#roll").hide();
-  $("button#hold").hide();
+  $(".game").hide();
   playerResults.round = 0;
 }
 
