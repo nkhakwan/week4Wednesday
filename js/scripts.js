@@ -1,7 +1,5 @@
 // Business Logic --------------------------------------------
-// var round = 1;
- var turnTotal = 0;
-
+var turnTotal = 0;
 
 function PlayerResults() {
   this.player1GrandTotal = 0,
@@ -15,12 +13,12 @@ PlayerResults.prototype.updateTotal = function(turnTotal) {
     this.player1GrandTotal += turnTotal;
     this.switchPlayer();
   } else {
-    this.player2GrandTotal += turnTotal;
-    this.round += 1;
+      this.player2GrandTotal += turnTotal;
+      this.round += 1;
     if (this.round === 4) {
       endOfGame();
     } else {
-    this.switchPlayer();
+      this.switchPlayer();
     }
   }
 }
@@ -40,12 +38,12 @@ var eachRoll = function() {
 }
 
 var roundTotal = function() {
- var rollResult = eachRoll();
- $(".roll").html(rollResult);
- if (rollResult === 0){
-  turnTotal = 0;
-  playerResults.updateTotal(turnTotal);
-  $(".roll").html(1);
+  var rollResult = eachRoll();
+  $(".roll").html(rollResult);
+  if (rollResult === 0){
+    turnTotal = 0;
+    playerResults.updateTotal(turnTotal);
+    $(".roll").html(1);
   }
   else {
     turnTotal += rollResult;
@@ -80,12 +78,11 @@ $(document).ready(function() {
     roundTotal();
     refreshScores();
   })
-  //Update hold in the future so two places are not updating the same variable-best practice
   $("button#hold").click(function() {  
     playerResults.updateTotal(turnTotal);
     refreshScores();
   })
   $("button#new-game").click(function() {
     window.location.reload();
-  })  
+  })
 })
