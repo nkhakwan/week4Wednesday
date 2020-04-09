@@ -2,7 +2,7 @@
 
 #### _Epicodus Project, Interactive Pig Dice Game April 8, 2020_
 
-#### By _**Jessica Hvozdovich and Khan Sahab**_
+#### By _**Jessica Hvozdovich and KhaanSahab**_
 
 ## Description
 
