@@ -20,6 +20,10 @@ button:hover {
   font-weight: bolder;
 }
 
+.dice {
+  display: none;
+}
+
 .gameover {
   display: none;
   margin: 5%;
